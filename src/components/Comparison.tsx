@@ -32,15 +32,15 @@ const Comparison = () => {
             className="p-8 md:p-12 bg-[#0A0A0A] rounded-3xl border border-white/5"
           >
             <div className="mb-8">
-              <span className="text-white/40 font-mono text-sm tracking-widest uppercase block mb-2">O Padrão do Mercado</span>
-              <h3 className="text-3xl font-bold font-sans text-white/50">Outros / Templates</h3>
-              <p className="text-white/30 font-light mt-4">Soluções genéricas que limitam seu crescimento.</p>
+              <span className="text-white/70 font-mono text-sm tracking-widest uppercase block mb-2">O Padrão do Mercado</span>
+              <h3 className="text-3xl font-bold font-sans text-white">Outros / Templates</h3>
+              <p className="text-white/60 font-medium mt-4">Soluções genéricas que limitam seu crescimento.</p>
             </div>
             <ul className="space-y-6">
               {generic.map((item, i) => (
-                <li key={i} className="flex items-start gap-4 text-white/40">
-                  <XCircle className="w-6 h-6 flex-shrink-0 text-red-500/50" />
-                  <span className="font-light text-lg">{item}</span>
+                <li key={i} className="flex items-start gap-4 text-white/70">
+                  <XCircle className="w-6 h-6 flex-shrink-0 text-red-500/80" />
+                  <span className="font-medium text-lg">{item}</span>
                 </li>
               ))}
             </ul>

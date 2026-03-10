@@ -63,8 +63,8 @@ const TargetAudience = () => {
     <section id="publico" className="py-24 px-6 lg:px-12 bg-brand-bg relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div ref={setRef} className="mb-16 fade-in-up text-center">
-          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4">Para Quem a <span className="text-brand-primary">Keelon</span> Constrói?</h2>
-          <p className="text-brand-text font-light text-xl">Se você leva seu negócio a sério, nós somos o seu parceiro técnico.</p>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4 text-white">Para Quem a <span className="text-brand-primary">Elevation</span> Constrói?</h2>
+          <p className="text-white/80 font-medium text-xl">Se você leva seu negócio a sério, nós somos o seu parceiro técnico.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -82,8 +82,8 @@ const TargetAudience = () => {
                   <div className="w-12 h-12 rounded-full flex items-center justify-center border border-white/10 mb-6 text-brand-primary group-hover:bg-brand-primary/10 transition-colors duration-500">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-sans font-bold mb-3">{item.title}</h3>
-                  <p className="text-brand-text text-sm font-light leading-relaxed">{item.description}</p>
+                  <h3 className="text-xl font-sans font-bold mb-3 text-white">{item.title}</h3>
+                  <p className="text-white/70 text-sm font-medium leading-relaxed">{item.description}</p>
                 </div>
               </div>
             );

@@ -1,27 +1,64 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Filter, Star, ShoppingBag, MousePointer2 } from 'lucide-react';
 
 const stats = [
   {
-    icon: Filter,
-    value: 'Conversão',
-    label: 'O funil captura e o sistema processa. Transformamos tráfego em leads qualificados no seu CRM.'
+    title: 'Conversão',
+    label: 'O funil captura e o sistema processa. Transformamos tráfego em leads qualificados no seu CRM.',
+    icon: (
+      <svg className="w-24 h-24 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
+        <path d="M4 4h16l-6 8v6l-4 2v-8L4 4z" />
+        <path d="M10 12h4" />
+        <rect x="11" y="20" width="2" height="2" />
+        <path d="M12 2v2" strokeDasharray="1 1" />
+        <circle cx="12" cy="16" r="0.5" />
+      </svg>
+    )
   },
   {
-    icon: Star,
-    value: 'Autoridade',
-    label: 'Solidez institucional em qualquer tela. Transmita confiança e esteja acessível em todo lugar.'
+    title: 'Autoridade',
+    label: 'Solidez institucional em qualquer tela. Transmita confiança e esteja acessível em todo lugar.',
+    icon: (
+      <svg className="w-24 h-24 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
+        <rect x="8" y="8" width="8" height="14" />
+        <rect x="10" y="4" width="4" height="4" />
+        <rect x="4" y="14" width="3" height="5" />
+        <path d="M17 12l2-1 2 1v3c0 2-2 4-2 4s-2-2-2-4v-3z" />
+        <path d="M19 14l-1 1-1-1" />
+      </svg>
+    )
   },
   {
-    icon: ShoppingBag,
-    value: 'Vendas',
-    label: 'O produto vira receita. Checkout fluido e segurança para maximizar cada transação.'
+    title: 'Vendas',
+    label: 'O produto vira receita. Checkout fluido e segurança para maximizar cada transação.',
+    icon: (
+      <svg className="w-24 h-24 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
+        <path d="M10 14l-6-3V5l6 3v6z" />
+        <path d="M10 14l6-3V5l-6 3v6z" />
+        <path d="M4 5l6-3 6 3" />
+        <rect x="14" y="6" width="8" height="5" rx="1" />
+        <path d="M14 8h8" />
+        <circle cx="10" cy="8" r="1.5" />
+        <circle cx="17" cy="9" r="0.5" />
+      </svg>
+    )
   },
   {
-    icon: MousePointer2,
-    value: 'Experiência',
-    label: 'A jornada se torna tangível. Design de interface completo guiando o usuário ao clique.'
+    title: 'Experiência',
+    label: 'A jornada se torna tangível. Design de interface completo guiando o usuário ao clique.',
+    icon: (
+      <svg className="w-24 h-24 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
+        <rect x="5" y="4" width="14" height="16" rx="1" />
+        <path d="M5 8h14" />
+        <circle cx="7" cy="6" r="0.5" />
+        <circle cx="9" cy="6" r="0.5" />
+        <rect x="8" y="10" width="8" height="2" rx="0.5" />
+        <rect x="10" y="14" width="4" height="1.5" rx="0.5" />
+        <line x1="12" y1="12" x2="12" y2="14" />
+        <circle cx="12" cy="18" r="1" />
+        <line x1="12" y1="15.5" x2="12" y2="17" />
+      </svg>
+    )
   }
 ];
 
@@ -30,42 +67,40 @@ const ResultsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-[#050505] relative border-y border-white/5 border-t-transparent overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#1C7C7D]/5 rounded-full blur-[120px] pointer-events-none"></div>
-
+    <section className="py-24 px-6 lg:px-12 bg-transparent relative border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="bg-[#0A0A0A] border border-white/5 rounded-[2rem] p-8 md:p-16 lg:p-24 text-center overflow-hidden"
+          className="text-center mb-16"
         >
-          <div className="mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-sans font-bold text-white mb-6">De Wireframe<br />a <span className="text-[#1C7C7D]">Resultados</span></h2>
-            <p className="text-white/60 font-light text-xl max-w-2xl mx-auto">Acompanhe a evolução. O conceito se transforma em uma máquina de vendas.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
-                  className="flex flex-col items-center"
-                >
-                  <div className="w-16 h-16 rounded-full bg-[#1C7C7D]/10 flex items-center justify-center mb-6 border border-[#1C7C7D]/20 shadow-[0_0_20px_rgba(28,124,125,0.2)]">
-                    <Icon className="w-8 h-8 text-[#1C7C7D]" />
-                  </div>
-                  <div className="text-3xl font-bold font-sans text-white mb-4">{stat.value}</div>
-                  <div className="text-white/50 font-light text-sm leading-relaxed">{stat.label}</div>
-                </motion.div>
-              );
-            })}
-          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-white mb-4">De Wireframe a <span className="text-[#1C7C7D]/80">Resultados</span></h2>
+          <p className="text-white/60 font-medium text-lg max-w-2xl mx-auto">Acompanhe a evolução. O conceito se transforma em uma máquina de vendas.</p>
         </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, index) => {
+            return (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
+                className="group relative p-8 bg-[#080808] rounded-2xl border border-white/5 overflow-hidden transition-colors hover:border-brand-primary/50 flex flex-col items-start text-left h-full"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10 flex flex-col h-full w-full">
+                  <div className="flex justify-center w-full opacity-60 group-hover:opacity-100 transition-opacity duration-500 mb-12">
+                    {stat.icon}
+                  </div>
+                  <h3 className="text-xl font-bold font-sans text-white mb-3 group-hover:text-brand-primary transition-colors">{stat.title}</h3>
+                  <p className="text-white/70 font-medium text-sm leading-relaxed">{stat.label}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Award, Target, TrendingUp, MonitorSmartphone } from 'lucide-react';
+import Globe from './Globe';
 
 const benefits = [
   {
@@ -42,10 +43,10 @@ const ValueProposition = () => {
           className="z-10"
         >
           <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-sans font-bold mb-6">
-              Por que um site <span className="text-brand-primary">Keelon</span> muda o jogo?
+            <h2 className="text-4xl md:text-5xl font-sans font-bold mb-6 text-white">
+              Por que um site <span className="text-brand-primary">Elevation</span> muda o jogo?
             </h2>
-            <p className="text-brand-text text-lg font-light">
+            <p className="text-white/80 text-lg font-medium">
               Não entregamos apenas código. Entregamos resultados tangíveis e conectamos você ao mundo.
             </p>
           </div>
@@ -66,7 +67,7 @@ const ValueProposition = () => {
                   </div>
                   <div>
                     <h4 className="text-xl font-bold font-sans mb-1 text-white">{item.title}</h4>
-                    <p className="text-brand-text font-light text-sm">{item.description}</p>
+                    <p className="text-white/70 font-medium text-sm">{item.description}</p>
                   </div>
                 </motion.div>
               );
@@ -74,28 +75,15 @@ const ValueProposition = () => {
           </div>
         </motion.div>
 
-        {/* Right Side: 3D Globe Animation (CSS/HTML placeholder since ThreeJS wasn't requested in setup) */}
+        {/* Right Side: Interactive 3D Globe */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
           transition={{ duration: 1 }}
           className="relative h-[400px] lg:h-[600px] flex items-center justify-center"
         >
-          <div className="absolute inset-0 bg-brand-primary/10 rounded-full blur-[120px]"></div>
-          
-          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-            <div className="absolute inset-0 border border-brand-primary/30 rounded-full animate-[spin_10s_linear_infinite]" style={{ transform: 'rotateX(70deg)' }}></div>
-            <div className="absolute inset-0 border border-brand-primary/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" style={{ transform: 'rotateY(70deg)' }}></div>
-            <div className="absolute inset-0 border border-brand-primary/30 rounded-full animate-[spin_20s_linear_infinite]" style={{ transform: 'rotateZ(45deg)' }}></div>
-            
-            <div className="absolute inset-1/4 rounded-full bg-gradient-to-br from-brand-primary to-[#0A2E2E] opacity-20 shadow-[0_0_50px_rgba(28,124,125,0.5)] animate-pulse"></div>
-            
-            {/* Dots */}
-            <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-brand-primary rounded-full shadow-[0_0_10px_#1C7C7D] animate-ping"></div>
-            <div className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-brand-primary rounded-full shadow-[0_0_10px_#1C7C7D] animate-pulse"></div>
-            <div className="absolute top-1/2 left-3/4 w-2 h-2 bg-brand-primary rounded-full shadow-[0_0_10px_#1C7C7D]"></div>
-            <div className="absolute bottom-1/4 left-1/2 w-4 h-4 bg-brand-primary rounded-full shadow-[0_0_10px_#1C7C7D] opacity-60"></div>
-          </div>
+          <div className="absolute inset-0 bg-brand-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+          <Globe />
         </motion.div>
 
       </div>

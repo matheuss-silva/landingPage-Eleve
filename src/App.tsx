@@ -6,8 +6,7 @@ import TargetAudience from './components/TargetAudience';
 import ValueProposition from './components/ValueProposition';
 import BrandingHighlight from './components/BrandingHighlight';
 import Comparison from './components/Comparison';
-import Expertise from './components/Expertise';
-import ResultsSection from './components/ResultsSection';
+import ExpertResults from './components/ExpertResults';
 import FinalCTA from './components/FinalCTA';
 import FooterBlock from './components/FooterBlock';
 
@@ -23,8 +22,7 @@ const App = () => {
         <ValueProposition />
         <BrandingHighlight />
         <Comparison />
-        <Expertise />
-        <ResultsSection />
+        <ExpertResults />
         <FinalCTA />
       </main>
 

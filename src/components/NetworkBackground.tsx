@@ -11,6 +11,17 @@ const NetworkBackground = () => {
 
     let particles: Particle[] = [];
     let animationFrameId: number;
+    let mouse = { x: -1000, y: -1000 };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+
+    const handleMouseOut = () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    };
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -52,7 +63,7 @@ const NetworkBackground = () => {
 
     const initParticles = () => {
       particles = [];
-      const numParticles = Math.min(180, Math.floor((canvas.width * canvas.height) / 6000));
+      const numParticles = Math.min(85, Math.floor((canvas.width * canvas.height) / 12000));
       for (let i = 0; i < numParticles; i++) {
         particles.push(new Particle());
       }
@@ -75,6 +86,21 @@ const NetworkBackground = () => {
             ctx.stroke();
           }
         }
+        
+        // Connect to mouse
+        const dxMouse = particles[i].x - mouse.x;
+        const dyMouse = particles[i].y - mouse.y;
+        const distanceMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+        
+        if (distanceMouse < 250) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          const opacity = 1 - distanceMouse / 250;
+          ctx.strokeStyle = `rgba(28, 124, 125, ${Math.min(1, opacity * 2)})`;
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        }
       }
     };
 
@@ -92,10 +118,14 @@ const NetworkBackground = () => {
 
     resize();
     window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseout', handleMouseOut);
     animate();
 
     return () => {
       window.removeEventListener('resize', resize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseout', handleMouseOut);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
