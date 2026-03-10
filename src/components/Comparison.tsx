@@ -1,89 +1,79 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { XCircle, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const generic = [
-  'Templates genéricos e repetitivos.',
-  'Design focado apenas no visual, esquecendo a conversão.',
-  'Código pesado e lento, penalizando o SEO.',
-  'Falta de estratégia digital integrada.'
+  'Design Repetido & Genérico',
+  'Código Pesado (Wix/Elementor)',
+  'Sem Estratégia de Venda',
+  'Lentidão no Carregamento'
 ];
 
 const premium = [
-  'Design Exclusivo e Kinetic, focado na sua autoridade.',
-  'Ecossistema construído para Máxima Conversão.',
-  'Alta Performance: Stack tecnológica moderna (Vue/React).',
-  'Consultoria Estratégica Ponta a Ponta.'
+  'Design 100% Exclusivo',
+  'Next.js (Performance Máxima)',
+  'Foco Total em Conversão',
+  'Consultoria Estratégica Inclusa'
 ];
 
 const Comparison = () => {
-  const observeRefs = useRef<(HTMLElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observeRefs.current.forEach(el => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const setRef = (el: HTMLElement | null) => {
-    if (el && !observeRefs.current.includes(el)) {
-      observeRefs.current.push(el);
-    }
-  };
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-[#0A0A0A] relative border-y border-white/5">
+    <section className="py-24 px-6 lg:px-12 bg-[#050505] relative border-y border-white/5">
       <div className="max-w-6xl mx-auto">
-        <div ref={setRef} className="text-center mb-16 fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4">A ABORDAGEM <span className="text-brand-primary">PREMIUM</span></h2>
-          <p className="text-brand-text font-light text-lg">Por que nos destacamos do mercado tradicional.</p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12" ref={ref}>
           {/* Generic */}
-          <div ref={setRef} className="p-8 md:p-12 bg-brand-bg rounded-3xl border border-white/5 fade-in-up">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center">
-                <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
-              </div>
-              <h3 className="text-2xl font-bold font-sans text-white/50">Agências Tradicionais</h3>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6 }}
+            className="p-8 md:p-12 bg-[#0A0A0A] rounded-3xl border border-white/5"
+          >
+            <div className="mb-8">
+              <span className="text-white/40 font-mono text-sm tracking-widest uppercase block mb-2">O Padrão do Mercado</span>
+              <h3 className="text-3xl font-bold font-sans text-white/50">Outros / Templates</h3>
+              <p className="text-white/30 font-light mt-4">Soluções genéricas que limitam seu crescimento.</p>
             </div>
             <ul className="space-y-6">
               {generic.map((item, i) => (
-                <li key={i} className="flex items-start gap-4 text-brand-text">
-                  <span className="mt-1 text-white/20">—</span>
-                  <span className="font-light">{item}</span>
+                <li key={i} className="flex items-start gap-4 text-white/40">
+                  <XCircle className="w-6 h-6 flex-shrink-0 text-red-500/50" />
+                  <span className="font-light text-lg">{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Premium */}
-          <div ref={setRef} className="p-8 md:p-12 bg-gradient-to-b from-brand-primary/10 to-transparent rounded-3xl border border-brand-primary/30 relative overflow-hidden fade-in-up delay-200">
-            <div className="absolute inset-0 bg-brand-primary/5 blur-3xl pointer-events-none"></div>
-            <div className="flex items-center gap-3 mb-8 relative z-10">
-              <div className="w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center border border-brand-primary/50 shadow-[0_0_10px_rgba(28,124,125,0.5)]">
-                <svg className="w-4 h-4 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6 9 17l-5-5"/></svg>
-              </div>
-              <h3 className="text-2xl font-bold font-sans text-white">Elevation Digital</h3>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="p-8 md:p-12 bg-gradient-to-b from-[#1C7C7D]/10 to-transparent rounded-3xl border border-[#1C7C7D]/30 relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 bg-[#1C7C7D]/5 blur-3xl pointer-events-none group-hover:bg-[#1C7C7D]/10 transition-colors duration-500"></div>
+            
+            <div className="relative z-10 mb-8">
+              <span className="text-[#1C7C7D] font-mono text-sm tracking-widest uppercase block mb-2 font-bold animate-pulse">A Solução Definitiva</span>
+              <h3 className="text-3xl font-bold font-sans text-white">Elevation Digital</h3>
+              <p className="text-white/80 font-light mt-4">Performance extrema e design exclusivo.</p>
             </div>
-            <ul className="space-y-6 relative z-10">
+            
+            <ul className="space-y-6 relative z-10 mb-12">
               {premium.map((item, i) => (
                 <li key={i} className="flex items-start gap-4 text-white">
-                  <svg className="w-5 h-5 flex-shrink-0 text-brand-primary mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m9 18 6-6-6-6"/></svg>
-                  <span className="font-medium">{item}</span>
+                  <CheckCircle2 className="w-6 h-6 flex-shrink-0 text-[#1C7C7D]" />
+                  <span className="font-medium text-lg">{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
+
+            <a href="#portfolio" className="relative z-10 inline-flex items-center gap-2 text-white font-sans font-bold bg-[#1C7C7D] px-6 py-3 rounded-full hover:bg-white hover:text-black transition-colors">
+              Conhecer Portfólio <ArrowRight className="w-4 h-4" />
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>

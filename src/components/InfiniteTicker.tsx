@@ -2,39 +2,39 @@ import React from 'react';
 
 const InfiniteTicker = () => {
   return (
-    <div className="relative w-full border-y border-white/10 bg-brand-bg py-3 overflow-hidden flex whitespace-nowrap">
-      <div className="animate-marquee flex gap-8 items-center min-w-full font-mono text-sm tracking-widest text-brand-primary opacity-80 uppercase">
-        <span>HIGH-PERFORMANCE</span>
-        <span className="text-white/30">•</span>
-        <span>DIGITAL STRATEGY</span>
-        <span className="text-white/30">•</span>
-        <span>KINETIC DESIGN</span>
-        <span className="text-white/30">•</span>
-        <span>REAL-TIME ORCHESTRATION</span>
-        <span className="text-white/30">•</span>
-        <span>VISIONARY BRANDS</span>
-        <span className="text-white/30">•</span>
-        <span>HIGH-PERFORMANCE</span>
-        <span className="text-white/30">•</span>
-        <span>DIGITAL STRATEGY</span>
-        <span className="text-white/30">•</span>
-        <span>KINETIC DESIGN</span>
-        <span className="text-white/30">•</span>
-        <span>REAL-TIME ORCHESTRATION</span>
-        <span className="text-white/30">•</span>
-        <span>VISIONARY BRANDS</span>
-        <span className="text-white/30">•</span>
+    <div className="relative w-full border-y border-white/5 bg-[#050505] py-4 overflow-hidden flex whitespace-nowrap">
+      <div className="animate-marquee flex gap-12 items-center min-w-full font-mono text-sm tracking-widest text-[#1C7C7D] uppercase">
+        <span className="font-bold">DIGITAL MASTERPIECES</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">HIGH-END DESIGN</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">CONVERSION FOCUSED</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">DIGITAL MASTERPIECES</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">HIGH-END DESIGN</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">CONVERSION FOCUSED</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">DIGITAL MASTERPIECES</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">HIGH-END DESIGN</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">CONVERSION FOCUSED</span>
+        <span className="text-white/20">•</span>
         {/* Duplicate for seamless loop */}
-        <span>HIGH-PERFORMANCE</span>
-        <span className="text-white/30">•</span>
-        <span>DIGITAL STRATEGY</span>
-        <span className="text-white/30">•</span>
-        <span>KINETIC DESIGN</span>
-        <span className="text-white/30">•</span>
-        <span>REAL-TIME ORCHESTRATION</span>
-        <span className="text-white/30">•</span>
-        <span>VISIONARY BRANDS</span>
-        <span className="text-white/30">•</span>
+        <span className="font-bold">DIGITAL MASTERPIECES</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">HIGH-END DESIGN</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">CONVERSION FOCUSED</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">DIGITAL MASTERPIECES</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">HIGH-END DESIGN</span>
+        <span className="text-white/20">•</span>
+        <span className="font-bold">CONVERSION FOCUSED</span>
+        <span className="text-white/20">•</span>
       </div>
     </div>
   );

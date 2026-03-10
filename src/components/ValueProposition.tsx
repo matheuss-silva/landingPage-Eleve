@@ -1,0 +1,106 @@
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Award, Target, TrendingUp, MonitorSmartphone } from 'lucide-react';
+
+const benefits = [
+  {
+    title: 'Credibilidade Instantânea',
+    description: 'Sua marca passa de "mais uma" para "líder de mercado".',
+    icon: Award,
+  },
+  {
+    title: 'Fundação para Ads',
+    description: 'Destinos otimizados para converter, não apenas receber cliques.',
+    icon: Target,
+  },
+  {
+    title: 'Vendedor 24/7',
+    description: 'Um site que explica, convence e vende enquanto você dorme.',
+    icon: TrendingUp,
+  },
+  {
+    title: 'Centralização',
+    description: 'Um Link na Bio que realmente impressiona e organiza seu ecossistema.',
+    icon: MonitorSmartphone,
+  },
+];
+
+const ValueProposition = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section className="py-24 px-6 lg:px-12 bg-[#050505] relative border-t border-white/5 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        {/* Left Side: Copy & Benefits */}
+        <motion.div 
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+          className="z-10"
+        >
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-5xl font-sans font-bold mb-6">
+              Por que um site <span className="text-brand-primary">Keelon</span> muda o jogo?
+            </h2>
+            <p className="text-brand-text text-lg font-light">
+              Não entregamos apenas código. Entregamos resultados tangíveis e conectamos você ao mundo.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {benefits.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
+                  className="flex items-start gap-5"
+                >
+                  <div className="mt-1 w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center border border-brand-primary/30 text-brand-primary flex-shrink-0 shadow-[0_0_15px_rgba(28,124,125,0.2)]">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold font-sans mb-1 text-white">{item.title}</h4>
+                    <p className="text-brand-text font-light text-sm">{item.description}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Right Side: 3D Globe Animation (CSS/HTML placeholder since ThreeJS wasn't requested in setup) */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+          transition={{ duration: 1 }}
+          className="relative h-[400px] lg:h-[600px] flex items-center justify-center"
+        >
+          <div className="absolute inset-0 bg-brand-primary/10 rounded-full blur-[120px]"></div>
+          
+          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+            <div className="absolute inset-0 border border-brand-primary/30 rounded-full animate-[spin_10s_linear_infinite]" style={{ transform: 'rotateX(70deg)' }}></div>
+            <div className="absolute inset-0 border border-brand-primary/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" style={{ transform: 'rotateY(70deg)' }}></div>
+            <div className="absolute inset-0 border border-brand-primary/30 rounded-full animate-[spin_20s_linear_infinite]" style={{ transform: 'rotateZ(45deg)' }}></div>
+            
+            <div className="absolute inset-1/4 rounded-full bg-gradient-to-br from-brand-primary to-[#0A2E2E] opacity-20 shadow-[0_0_50px_rgba(28,124,125,0.5)] animate-pulse"></div>
+            
+            {/* Dots */}
+            <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-brand-primary rounded-full shadow-[0_0_10px_#1C7C7D] animate-ping"></div>
+            <div className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-brand-primary rounded-full shadow-[0_0_10px_#1C7C7D] animate-pulse"></div>
+            <div className="absolute top-1/2 left-3/4 w-2 h-2 bg-brand-primary rounded-full shadow-[0_0_10px_#1C7C7D]"></div>
+            <div className="absolute bottom-1/4 left-1/2 w-4 h-4 bg-brand-primary rounded-full shadow-[0_0_10px_#1C7C7D] opacity-60"></div>
+          </div>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+};
+
+export default ValueProposition;

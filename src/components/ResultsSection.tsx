@@ -1,80 +1,71 @@
-import React, { useRef, useEffect } from 'react';
-import { LayoutTemplate, Code2, Rocket } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Filter, Star, ShoppingBag, MousePointer2 } from 'lucide-react';
 
-const steps = [
+const stats = [
   {
-    title: 'Wireframe & Estratégia',
-    description: 'Mapeamento arquitetural, UX/UI e fluxos de navegação desenhados para retenção.',
-    icon: LayoutTemplate
+    icon: Filter,
+    value: 'Conversão',
+    label: 'O funil captura e o sistema processa. Transformamos tráfego em leads qualificados no seu CRM.'
   },
   {
-    title: 'Desenvolvimento Kinetic',
-    description: 'Implementação pixel-perfect com Vue/React, focada em animações e performance.',
-    icon: Code2
+    icon: Star,
+    value: 'Autoridade',
+    label: 'Solidez institucional em qualquer tela. Transmita confiança e esteja acessível em todo lugar.'
   },
   {
-    title: 'Lançamento & Escala',
-    description: 'Deploy otimizado e estratégias de conversão para dominância de mercado.',
-    icon: Rocket
+    icon: ShoppingBag,
+    value: 'Vendas',
+    label: 'O produto vira receita. Checkout fluido e segurança para maximizar cada transação.'
+  },
+  {
+    icon: MousePointer2,
+    value: 'Experiência',
+    label: 'A jornada se torna tangível. Design de interface completo guiando o usuário ao clique.'
   }
 ];
 
 const ResultsSection = () => {
-  const observeRefs = useRef<(HTMLElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observeRefs.current.forEach(el => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const setRef = (el: HTMLElement | null) => {
-    if (el && !observeRefs.current.includes(el)) {
-      observeRefs.current.push(el);
-    }
-  };
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-brand-bg relative border-t border-white/5 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div ref={setRef} className="text-center mb-16 fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4">DO CÓDIGO AOS <span className="text-brand-primary">RESULTADOS</span></h2>
-          <p className="text-brand-text font-light text-lg">Processo transparente focado em entregar ROAS absoluto.</p>
-        </div>
+    <section className="py-24 px-6 lg:px-12 bg-[#050505] relative border-y border-white/5 border-t-transparent overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#1C7C7D]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-        <div className="grid md:grid-cols-3 gap-8 relative">
-          {/* Connecting Line */}
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-white/10 -translate-y-1/2 z-0"></div>
+      <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.8 }}
+          className="bg-[#0A0A0A] border border-white/5 rounded-[2rem] p-8 md:p-16 lg:p-24 text-center overflow-hidden"
+        >
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-sans font-bold text-white mb-6">De Wireframe<br />a <span className="text-[#1C7C7D]">Resultados</span></h2>
+            <p className="text-white/60 font-light text-xl max-w-2xl mx-auto">Acompanhe a evolução. O conceito se transforma em uma máquina de vendas.</p>
+          </div>
 
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <div 
-                key={index} 
-                ref={setRef}
-                className="relative z-10 p-8 bg-brand-card rounded-2xl border border-white/5 fade-in-up text-center" 
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="w-16 h-16 mx-auto bg-brand-bg rounded-2xl border border-white/10 mb-6 flex items-center justify-center text-brand-primary shadow-[0_0_20px_rgba(28,124,125,0.1)] relative">
-                  <span className="absolute -top-3 -right-3 text-xs font-mono bg-brand-primary text-black px-2 py-0.5 rounded shadow-lg">{'0' + (index + 1)}</span>
-                  <Icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold font-sans mb-3">{step.title}</h3>
-                <p className="text-brand-text text-sm font-light">{step.description}</p>
-              </div>
-            );
-          })}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
+                  className="flex flex-col items-center"
+                >
+                  <div className="w-16 h-16 rounded-full bg-[#1C7C7D]/10 flex items-center justify-center mb-6 border border-[#1C7C7D]/20 shadow-[0_0_20px_rgba(28,124,125,0.2)]">
+                    <Icon className="w-8 h-8 text-[#1C7C7D]" />
+                  </div>
+                  <div className="text-3xl font-bold font-sans text-white mb-4">{stat.value}</div>
+                  <div className="text-white/50 font-light text-sm leading-relaxed">{stat.label}</div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
