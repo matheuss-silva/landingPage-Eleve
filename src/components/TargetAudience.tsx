@@ -4,36 +4,35 @@ import { Building2, ShoppingCart, User, Briefcase, Users, LayoutTemplate } from 
 const audience = [
   {
     title: 'Empresas Consolidadas',
-    description: 'Que buscam modernização e autoridade digital.',
+    description: 'Que buscam modernizar sua presença digital e fortalecer sua autoridade no mercado.',
     icon: Building2
   },
   {
     title: 'Infoprodutores',
-    description: 'Que precisam de High-Converting Landing Pages.',
+    description: 'Que precisam de landing pages estratégicas para vender mais e escalar suas ofertas.',
     icon: LayoutTemplate
   },
   {
     title: 'Criadores de Conteúdo',
-    description: 'Que desejam um hub central profissional.',
+    description: 'Que desejam uma presença digital profissional para apresentar, organizar e monetizar seu trabalho.',
     icon: Users
   },
   {
     title: 'Profissionais Autônomos',
-    description: 'Médicos, Advogados que exigem uma imagem premium.',
+    description: 'Como médicos, advogados e consultores que precisam transmitir credibilidade e percepção de alto valor.',
     icon: User
   },
   {
-    title: 'Pessoas Jurídicas (PJ)',
-    description: 'Negócios que entendem que o amadorismo custa caro.',
+    title: 'Empresas e Prestadores de Serviço',
+    description: 'Negócios que precisam transmitir profissionalismo, gerar confiança e conquistar mais oportunidades.',
     icon: Briefcase
   },
   {
-    title: 'E-commerce & Varejo',
-    description: 'Lojas que buscam experiência de compra fluida e vendas.',
+    title: 'E-commerce e Varejo',
+    description: 'Marcas que buscam uma experiência de compra mais fluida, estratégica e orientada à conversão.',
     icon: ShoppingCart
   }
 ];
-
 const TargetAudience = () => {
   const observeRefs = useRef<(HTMLElement | null)[]>([]);
 
@@ -63,8 +62,8 @@ const TargetAudience = () => {
     <section id="publico" className="py-24 px-6 lg:px-12 bg-brand-bg relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div ref={setRef} className="mb-16 fade-in-up text-center">
-          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4 text-white">Para Quem a <span className="text-brand-primary">Elevation</span> Constrói?</h2>
-          <p className="text-white/80 font-medium text-xl">Se você leva seu negócio a sério, nós somos o seu parceiro técnico.</p>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4 text-white">Para Quem a <span className="text-brand-primary">Elevation</span> é ideal</h2>
+          <p className="text-white/80 font-medium text-xl">Para negócios que entendem que uma presença digital bem construída gera percepção, confiança e resultados.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -74,16 +73,16 @@ const TargetAudience = () => {
               <div 
                 key={index} 
                 ref={setRef}
-                className="group relative p-8 bg-[#0A0A0A] rounded-2xl border border-white/5 overflow-hidden transition-all hover:border-brand-primary/40 hover:-translate-y-1 fade-in-up" 
+                className="group relative p-6 bg-[#0f0f0f] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-brand-primary/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)] fade-in-up" 
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center border border-white/10 mb-6 text-brand-primary group-hover:bg-brand-primary/10 transition-colors duration-500">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center border border-white/20 mb-5 text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-sans font-bold mb-3 text-white">{item.title}</h3>
-                  <p className="text-white/70 text-sm font-medium leading-relaxed">{item.description}</p>
+                  <h3 className="text-xl font-sans font-bold mb-2 text-white group-hover:text-white transition-colors">{item.title}</h3>
+                  <p className="text-white/80 group-hover:text-white/95 text-sm font-medium leading-relaxed transition-colors">{item.description}</p>
                 </div>
               </div>
             );

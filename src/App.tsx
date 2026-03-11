@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import InfiniteTicker from './components/InfiniteTicker';
 import TargetAudience from './components/TargetAudience';
 import ValueProposition from './components/ValueProposition';
-import BrandingHighlight from './components/BrandingHighlight';
 import Comparison from './components/Comparison';
 import ExpertResults from './components/ExpertResults';
 import FinalCTA from './components/FinalCTA';
@@ -20,7 +19,6 @@ const App = () => {
         <InfiniteTicker />
         <TargetAudience />
         <ValueProposition />
-        <BrandingHighlight />
         <Comparison />
         <ExpertResults />
         <FinalCTA />

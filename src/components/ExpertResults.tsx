@@ -89,17 +89,17 @@ export default function ExpertResults() {
               <div key={index} className="relative min-h-[400px] rounded-2xl border border-white/5 bg-[#080808] overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                <div className="relative z-10 p-8 flex flex-col w-full h-full">
+                <div className="relative z-10 p-6 flex flex-col w-full h-full">
                   {/* Animating Icon Area */}
                   <motion.div 
                     style={{ scale: iconScale }} 
                     className="flex justify-center w-full mb-10"
                   >
-                    <div className="relative w-20 h-20 grid place-items-center">
-                      <motion.div style={{ opacity: iconExpOp }} className="col-start-1 row-start-1 flex items-center justify-center text-[#1C7C7D] w-16 h-16">
+                    <div className="relative w-24 h-24 grid place-items-center">
+                      <motion.div style={{ opacity: iconExpOp }} className="col-start-1 row-start-1 flex items-center justify-center text-[#1C7C7D] w-20 h-20">
                         {expIcons[index]}
                       </motion.div>
-                      <motion.div style={{ opacity: iconResOp }} className="col-start-1 row-start-1 flex items-center justify-center text-[#1C7C7D] w-20 h-20">
+                      <motion.div style={{ opacity: iconResOp }} className="col-start-1 row-start-1 flex items-center justify-center text-[#1C7C7D] w-24 h-24">
                         {resIcons[index]}
                       </motion.div>
                     </div>

@@ -6,7 +6,7 @@ const expertiseItems = [
     title: 'Landing Page',
     description: 'Páginas de alta performance desenhadas com psicologia de consumo. Transforme visitantes em leads qualificados instantaneamente.',
     icon: (
-      <svg className="w-16 h-16 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg className="w-20 h-20 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
         <path d="M4 6h16l-4 8h-8l-4-8z" />
         <path d="M8 14l2 4h4l2-4" />
         <rect x="11" y="18" width="2" height="2" />
@@ -18,7 +18,7 @@ const expertiseItems = [
     title: 'Site Institucional',
     description: 'A vitrine digital da sua marca. Transmita solidez, autoridade e profissionalismo com um design 100% autoral e exclusivo.',
     icon: (
-      <svg className="w-16 h-16 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg className="w-20 h-20 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
         <rect x="7" y="12" width="10" height="8" />
         <rect x="9" y="8" width="6" height="4" />
         <rect x="11" y="4" width="2" height="4" />
@@ -30,7 +30,7 @@ const expertiseItems = [
     title: 'E-commerce',
     description: 'Lojas virtuais otimizadas para venda. Experiência de compra fluida, checkout seguro e design focado em aumentar seu ticket médio.',
     icon: (
-      <svg className="w-16 h-16 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg className="w-20 h-20 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
         <path d="M12 4l-8 4v8l8 4 8-4V8l-8-4z" />
         <path d="M12 4v16" strokeWidth="0.5" />
         <path d="M4 8l8 4 8-4" strokeWidth="0.5" />
@@ -42,7 +42,7 @@ const expertiseItems = [
     title: 'One-Page',
     description: 'Conte sua história em um único scroll. Ideal para lançamentos, portfólios ou produtos específicos que exigem foco total.',
     icon: (
-      <svg className="w-16 h-16 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <svg className="w-20 h-20 text-[#1C7C7D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
         <circle cx="12" cy="12" r="2" />
         <circle cx="12" cy="4" r="1.5" fill="none" />
         <circle cx="12" cy="20" r="1.5" fill="none" />
@@ -77,17 +77,17 @@ const Expertise = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative p-8 bg-[#080808] rounded-2xl border border-white/5 overflow-hidden transition-colors hover:border-brand-primary/50 flex flex-col h-full"
+              className="group relative p-6 bg-[#0f0f0f] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-brand-primary/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)] flex flex-col h-full"
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               <div className="relative z-10 flex flex-col h-full">
-                <div className="mb-12 flex justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="mb-10 flex justify-center text-brand-primary opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
                   {exp.icon}
                 </div>
                 
-                <h3 className="text-xl font-sans font-bold mb-4 text-white group-hover:text-brand-primary transition-colors">{exp.title}</h3>
-                <p className="text-white/70 mb-8 flex-grow font-medium leading-relaxed text-sm">{exp.description}</p>
+                <h3 className="text-xl font-sans font-bold mb-3 text-white transition-colors">{exp.title}</h3>
+                <p className="text-white/80 group-hover:text-white/95 mb-6 flex-grow font-medium leading-relaxed text-sm transition-colors">{exp.description}</p>
               </div>
             </motion.div>
           ))}

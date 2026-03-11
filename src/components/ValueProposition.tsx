@@ -5,23 +5,23 @@ import Globe from './Globe';
 
 const benefits = [
   {
-    title: 'Credibilidade Instantânea',
-    description: 'Sua marca passa de "mais uma" para "líder de mercado".',
+    title: 'Credibilidade Imediata',
+    description: 'Mais autoridade, confiança e valor para sua marca.',
     icon: Award,
   },
   {
-    title: 'Fundação para Ads',
-    description: 'Destinos otimizados para converter, não apenas receber cliques.',
+    title: 'Base Estratégica para Tráfego',
+    description: 'Páginas pensadas para converter, não só receber acessos.',
     icon: Target,
   },
   {
-    title: 'Vendedor 24/7',
-    description: 'Um site que explica, convence e vende enquanto você dorme.',
+    title: 'Presença que Trabalha por Você',
+    description: 'Seu site apresenta, convence e apoia suas vendas.',
     icon: TrendingUp,
   },
   {
-    title: 'Centralização',
-    description: 'Um Link na Bio que realmente impressiona e organiza seu ecossistema.',
+    title: 'Experiência Clara e Organizada',
+    description: 'Estrutura que guia o usuário e facilita decisões.',
     icon: MonitorSmartphone,
   },
 ];
@@ -43,11 +43,11 @@ const ValueProposition = () => {
           className="z-10"
         >
           <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-sans font-bold mb-6 text-white">
-              Por que um site <span className="text-brand-primary">Elevation</span> muda o jogo?
+            <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4 text-white">
+              Por que um site <span className="text-brand-primary">Elevation</span> faz diferença?
             </h2>
-            <p className="text-white/80 text-lg font-medium">
-              Não entregamos apenas código. Entregamos resultados tangíveis e conectamos você ao mundo.
+            <p className="text-white/80 text-base font-medium">
+              Não entregamos apenas design e desenvolvimento. Criamos páginas estratégicas para fortalecer sua presença digital, gerar confiança e apoiar seu crescimento.
             </p>
           </div>
 
@@ -60,14 +60,14 @@ const ValueProposition = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                   transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
-                  className="flex items-start gap-5"
+                  className="flex items-start gap-5 group"
                 >
-                  <div className="mt-1 w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center border border-brand-primary/30 text-brand-primary flex-shrink-0 shadow-[0_0_15px_rgba(28,124,125,0.2)]">
-                    <Icon className="w-5 h-5" />
+                  <div className="mt-1 w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center border border-brand-primary/30 text-brand-primary flex-shrink-0 shadow-[0_0_15px_rgba(28,124,125,0.2)] transition-all duration-300">
+                    <Icon className="w-5 h-5 group-hover:animate-[pulse_1s_ease-in-out_infinite]" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold font-sans mb-1 text-white">{item.title}</h4>
-                    <p className="text-white/70 font-medium text-sm">{item.description}</p>
+                    <h4 className="text-lg font-bold font-sans mb-1 text-white">{item.title}</h4>
+                    <p className="text-white/70 font-medium text-xs md:text-sm">{item.description}</p>
                   </div>
                 </motion.div>
               );
