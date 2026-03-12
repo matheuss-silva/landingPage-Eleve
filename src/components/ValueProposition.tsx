@@ -31,7 +31,7 @@ const ValueProposition = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-[#050505] relative border-t border-white/5 overflow-hidden">
+    <section className="py-24 px-6 lg:px-12 bg-brand-bg relative border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Side: Copy & Benefits */}

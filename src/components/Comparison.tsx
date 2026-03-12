@@ -24,7 +24,7 @@ const Comparison = () => {
   const btnInView = useInView(btnRef, { once: true, margin: "-50px" });
 
   return (
-    <section className="py-16 md:py-24 px-6 lg:px-12 bg-[#050505] relative border-y border-white/5 flex flex-col items-center justify-center">
+    <section className="py-16 md:py-24 px-6 lg:px-12 bg-brand-bg relative border-y border-white/5 flex flex-col items-center justify-center">
       
       {/* Integrated Branding Highlight Header */}
       <motion.div 
@@ -54,7 +54,7 @@ const Comparison = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={cardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }}
-            className="p-6 md:p-8 bg-[#0f0f0f] rounded-3xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/20 hover:-translate-y-1 hover:shadow-2xl"
+            className="p-6 md:p-8 bg-brand-cardHover rounded-3xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/20 hover:-translate-y-1 hover:shadow-2xl"
           >
             <div className="mb-8">
               <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 border border-white/10">

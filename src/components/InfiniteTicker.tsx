@@ -12,7 +12,7 @@ const words = [
   const repeatedWords = [...words, ...words, ...words, ...words];
 
   return (
-    <div className="relative w-full border-y border-white/5 bg-[#050505] py-4 md:py-6 overflow-hidden flex flex-col gap-2">
+    <div className="relative w-full border-y border-white/5 bg-brand-bg py-4 md:py-6 overflow-hidden flex flex-col gap-2">
       {/* Top Row - Moves Left */}
       <div className="flex whitespace-nowrap overflow-hidden">
         <div className="animate-marquee flex items-center min-w-full font-sans font-bold text-2xl md:text-4xl lg:text-5xl tracking-tighter text-white/[0.08] uppercase">

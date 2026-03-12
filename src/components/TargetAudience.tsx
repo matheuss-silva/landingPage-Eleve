@@ -73,7 +73,7 @@ const TargetAudience = () => {
               <div 
                 key={index} 
                 ref={setRef}
-                className="group relative p-6 bg-[#0f0f0f] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-brand-primary/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)] fade-in-up" 
+                className="group relative p-6 bg-brand-cardHover rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-brand-primary/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)] fade-in-up" 
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

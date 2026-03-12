@@ -16,7 +16,7 @@ const BrandingHighlight = () => {
   return (
     <section 
       ref={containerRef}
-      className="py-32 md:py-48 px-6 lg:px-12 bg-[#050505] relative border-t border-white/5 overflow-hidden flex flex-col items-center justify-center text-center"
+      className="py-32 md:py-48 px-6 lg:px-12 bg-brand-bg relative border-t border-white/5 overflow-hidden flex flex-col items-center justify-center text-center"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,124,125,0.05)_0%,transparent_70%)] pointer-events-none"></div>
 
