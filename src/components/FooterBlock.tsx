@@ -6,10 +6,7 @@ const FooterBlock = () => {
       <div className="flex items-center gap-2 mb-4 md:mb-0 text-center md:text-left">
         <span>Elevation Digital © 2026. Todos os direitos reservados.</span>
       </div>
-      <div className="flex gap-6">
-        <a href="#" className="hover:text-white transition-colors">INSTAGRAM</a>
-        <a href="#" className="hover:text-white transition-colors">LINKEDIN</a>
-      </div>
+
     </footer>
   );
 };
