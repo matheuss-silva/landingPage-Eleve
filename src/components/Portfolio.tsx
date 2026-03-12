@@ -92,7 +92,7 @@ const Portfolio = () => {
 
         <div className="text-left md:text-right">
           <h1 className="text-5xl md:text-6xl font-sans font-bold tracking-tight mb-3">
-            Projetos em <span className="text-brand-primary font-normal italic pr-2">Destaque</span>
+            Projetos <span className="text-transparent bg-clip-text bg-brand-gradient font-normal italic pr-2">Selecionados</span>
           </h1>
           <p className="text-[#A1A1AA] text-sm md:text-base font-light tracking-wide">
             Navegue por nossas categorias de excelência.

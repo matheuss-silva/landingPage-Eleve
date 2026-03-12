@@ -19,7 +19,7 @@ const FinalCTA = () => {
             [ HORA DA DECISÃO ]
           </span>
           <h2 className="text-5xl md:text-6xl lg:text-8xl font-sans font-bold text-white mb-8 tracking-tighter leading-none">
-            Seu Concorrente Já Está <span className="text-brand-primary">Se Movendo.</span> E Você?
+            Seu Concorrente Já Está <span className="text-transparent bg-clip-text bg-brand-gradient">Se Movendo.</span> E Você?
           </h2>
           <p className="text-brand-text font-light text-xl mb-12 max-w-2xl mx-auto">
             Vamos discutir o futuro do seu projeto agora mesmo.

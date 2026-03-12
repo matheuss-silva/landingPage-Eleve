@@ -78,7 +78,7 @@ DESIGN WEB PREMIUM
           ref={setRef}
           className="text-5xl md:text-7xl lg:text-9xl font-sans font-bold tracking-tight mb-8 max-w-5xl mx-auto leading-[1.1] fade-in-up delay-100">
           <span className="text-white block">O FUTURO</span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-400">COMEÇA
+          <span className="text-transparent bg-clip-text bg-brand-gradient">COMEÇA
             AGORA</span>
         </h1>
 

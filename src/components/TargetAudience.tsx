@@ -62,7 +62,7 @@ const TargetAudience = () => {
     <section id="publico" className="py-24 px-6 lg:px-12 bg-brand-bg relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div ref={setRef} className="mb-16 fade-in-up text-center">
-          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4 text-white">Para Quem a <span className="text-brand-primary">Elevation</span> é ideal</h2>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4 text-white">Para Quem a <span className="text-transparent bg-clip-text bg-brand-gradient">Elevation</span> é ideal</h2>
           <p className="text-white/80 font-medium text-xl">Para negócios que entendem que uma presença digital bem construída gera percepção, confiança e resultados.</p>
         </div>
 

@@ -44,7 +44,7 @@ const ValueProposition = () => {
         >
           <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4 text-white">
-              Por que um site <span className="text-brand-primary">Elevation</span> faz diferença?
+              Por que um site <span className="text-transparent bg-clip-text bg-brand-gradient">Elevation</span> faz diferença?
             </h2>
             <p className="text-white/80 text-base font-medium">
               Não entregamos apenas design e desenvolvimento. Criamos páginas estratégicas para fortalecer sua presença digital, gerar confiança e apoiar seu crescimento.
