@@ -9,6 +9,7 @@ import ExpertResults from './components/ExpertResults';
 import FinalCTA from './components/FinalCTA';
 import FooterBlock from './components/FooterBlock';
 import Portfolio from './components/Portfolio';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 const App = () => {
   const [showPortfolio, setShowPortfolio] = useState(false);
@@ -29,7 +30,12 @@ const App = () => {
   }, []);
 
   if (showPortfolio) {
-    return <Portfolio />;
+    return (
+      <div className="relative min-h-screen bg-brand-bg">
+        <Portfolio />
+        <FloatingWhatsApp />
+      </div>
+    );
   }
 
   return (
@@ -47,6 +53,7 @@ const App = () => {
       </main>
 
       <FooterBlock />
+      <FloatingWhatsApp />
     </div>
   );
 };

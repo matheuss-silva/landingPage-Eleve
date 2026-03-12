@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         brand: {
-          bg: '#141414',
-          card: '#1A1A1A',
-          cardHover: '#222222',
+          bg: '#050D14',
+          card: '#06121C',
+          cardHover: '#091723',
           dark: '#0B3954',
           secondary: '#0F5C73',
           primary: '#1C7C7D',
