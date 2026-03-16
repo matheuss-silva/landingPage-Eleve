@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import InfiniteTicker from './components/InfiniteTicker';
@@ -21,12 +21,56 @@ const App = () => {
         window.scrollTo(0, 0);
       }
     };
-    
-    // Check initial hash
+
     handleHashChange();
-    
+
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    const defaultTitle = document.title;
+    const hiddenTitles = ['🚀 Volta aqui!', '👀 Ta perdendo algo!'];
+    let currentTitleIndex = 0;
+    let titleInterval: number | null = null;
+
+    const stopHiddenTitleRotation = () => {
+      if (titleInterval !== null) {
+        window.clearInterval(titleInterval);
+        titleInterval = null;
+      }
+
+      document.title = defaultTitle;
+    };
+
+    const startHiddenTitleRotation = () => {
+      if (titleInterval !== null) {
+        return;
+      }
+
+      document.title = hiddenTitles[currentTitleIndex];
+
+      titleInterval = window.setInterval(() => {
+        currentTitleIndex = (currentTitleIndex + 1) % hiddenTitles.length;
+        document.title = hiddenTitles[currentTitleIndex];
+      }, 2000);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        startHiddenTitleRotation();
+        return;
+      }
+
+      stopHiddenTitleRotation();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      stopHiddenTitleRotation();
+    };
   }, []);
 
   if (showPortfolio) {
