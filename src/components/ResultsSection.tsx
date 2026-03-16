@@ -62,45 +62,72 @@ const stats = [
   }
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 const ResultsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-transparent relative border-t border-white/5 overflow-hidden">
+    <section className="relative overflow-hidden border-t border-white/5 bg-transparent px-5 py-20 sm:px-6 lg:px-12 lg:py-24">
       <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-12 text-center lg:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-white mb-4">De Wireframe a <span className="text-[#1C7C7D]/80">Resultados</span></h2>
-          <p className="text-white/60 font-medium text-lg max-w-2xl mx-auto">Acompanhe a evolução. O conceito se transforma em uma máquina de vendas.</p>
+          <h2 className="mb-4 text-3xl font-sans font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">De Wireframe a <span className="text-[#1C7C7D]/80">Resultados</span></h2>
+          <p className="mx-auto max-w-2xl text-base font-medium text-white/60 sm:text-lg">Acompanhe a evolução. O conceito se transforma em uma máquina de vendas.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+        >
           {stats.map((stat, index) => {
             return (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
-                className="group relative p-6 bg-brand-cardHover rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-brand-primary/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)] flex flex-col items-start text-left h-full"
+                variants={cardVariants}
+                whileHover={{ y: -6 }}
+                className="group relative flex h-full flex-col items-start overflow-hidden rounded-[1.6rem] border border-white/10 bg-brand-cardHover p-5 text-left transition-all duration-300 hover:border-brand-primary/60 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)] sm:p-6"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -left-8 bottom-0 h-24 w-24 rounded-full bg-brand-primary/10 blur-2xl transition-transform duration-500 group-hover:scale-125"></div>
                 <div className="relative z-10 flex flex-col h-full w-full">
-                  <div className="flex justify-center w-full text-brand-primary opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 mb-10">
+                  <div className="mb-7 flex w-full justify-center text-brand-primary opacity-80 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105 sm:mb-8">
                     {stat.icon}
                   </div>
-                  <h3 className="text-xl font-bold font-sans text-white mb-3 transition-colors">{stat.title}</h3>
-                  <p className="text-white/80 group-hover:text-white/95 font-medium text-sm leading-relaxed transition-colors">{stat.label}</p>
+                  <h3 className="mb-3 text-lg font-bold font-sans text-white transition-colors sm:text-xl">{stat.title}</h3>
+                  <p className="text-sm font-medium leading-relaxed text-white/76 transition-colors group-hover:text-white/95">{stat.label}</p>
                 </div>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

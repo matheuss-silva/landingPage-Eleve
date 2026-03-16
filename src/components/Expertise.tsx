@@ -53,45 +53,72 @@ const expertiseItems = [
   }
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 const Expertise = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="expertise" className="py-24 px-6 lg:px-12 bg-brand-bg relative border-t border-white/5">
+    <section id="expertise" className="relative border-t border-white/5 bg-brand-bg px-5 py-20 sm:px-6 lg:px-12 lg:py-24">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-12 text-center lg:mb-16"
         >
-          <span className="text-brand-primary font-mono text-sm tracking-widest uppercase mb-4 block font-bold">NOSSA EXPERTISE</span>
-          <h2 className="text-4xl md:text-5xl font-sans font-bold text-white">Soluções Digitais<br /><span className="text-white/60 font-light">Sob Medida</span></h2>
+          <span className="mb-4 block font-mono text-xs font-bold uppercase tracking-[0.28em] text-brand-primary sm:text-sm">NOSSA EXPERTISE</span>
+          <h2 className="text-3xl font-sans font-bold text-white sm:text-4xl md:text-5xl">Soluções Digitais<br /><span className="text-white/60 font-light">Sob Medida</span></h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+        >
           {expertiseItems.map((exp, index) => (
             <motion.div 
               key={index} 
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative p-6 bg-brand-cardHover rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-brand-primary/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)] flex flex-col h-full"
+              variants={cardVariants}
+              whileHover={{ y: -6 }}
+              className="group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-white/10 bg-brand-cardHover p-5 transition-all duration-300 hover:border-brand-primary/60 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)] sm:p-6"
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+              <div className="absolute -right-10 top-0 h-24 w-24 rounded-full bg-brand-primary/10 blur-2xl transition-transform duration-500 group-hover:scale-125"></div>
               
               <div className="relative z-10 flex flex-col h-full">
-                <div className="mb-10 flex justify-center text-brand-primary opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                <div className="mb-7 flex justify-center text-brand-primary opacity-80 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105 sm:mb-8">
                   {exp.icon}
                 </div>
                 
-                <h3 className="text-xl font-sans font-bold mb-3 text-white transition-colors">{exp.title}</h3>
-                <p className="text-white/80 group-hover:text-white/95 mb-6 flex-grow font-medium leading-relaxed text-sm transition-colors">{exp.description}</p>
+                <h3 className="mb-3 text-lg font-sans font-bold text-white transition-colors sm:text-xl">{exp.title}</h3>
+                <p className="mb-2 flex-grow text-sm font-medium leading-relaxed text-white/76 transition-colors group-hover:text-white/95">{exp.description}</p>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
