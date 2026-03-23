@@ -89,7 +89,7 @@ DESIGN WEB PREMIUM
 
         {/* CTAs */}
         <div ref={setRef} className="flex flex-col sm:flex-row items-center gap-6 fade-in-up delay-300">
-          <a href="#contato"
+          <a href="#whatsapp"
             className="group relative inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-black bg-white rounded-full transition-all duration-300 hover:scale-105 hover:bg-brand-primary hover:text-white shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(28,124,125,0.4)]">
             <span className="relative z-10 font-sans tracking-wide">Elevar Meu Nível</span>
           </a>

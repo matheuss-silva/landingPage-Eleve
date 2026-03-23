@@ -12,7 +12,7 @@ const NavBar = () => {
 
       {/* The Nav Pill */}
       <nav
-        className="pointer-events-auto flex items-center pl-5 pr-1.5 py-1.5 md:pl-10 md:pr-2 md:py-2 gap-4 md:gap-8 backdrop-blur-md bg-brand-card/90 border border-white/10 rounded-full shadow-2xl">
+        className="pointer-events-auto flex max-w-full items-center pl-3 pr-1.5 py-1.5 md:pl-10 md:pr-2 md:py-2 gap-3 md:gap-8 backdrop-blur-md bg-brand-card/90 border border-white/10 rounded-full shadow-2xl">
         {/* Mobile Logo (Inside Card) */}
         <div className="flex md:hidden items-center pl-2 flex-shrink-0">
           <a href="#home" className="flex items-center">
@@ -21,16 +21,16 @@ const NavBar = () => {
         </div>
 
         {/* Links */}
-        <div className="flex items-center gap-4 md:gap-8 text-xs font-sans font-medium text-white/50 tracking-wider">
-          <a href="#home" className="hidden md:block hover:text-white transition-colors">HOME</a>
-          <a href="#expertise" className="hover:text-white transition-colors">EXPERTISE</a>
-          <a href="#contato" className="hover:text-white transition-colors">CONTATO</a>
+        <div className="flex items-center gap-4 md:gap-8 text-[11px] md:text-xs font-sans font-medium text-white/50 tracking-wider overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <a href="#home" className="shrink-0 hover:text-white transition-colors">HOME</a>
+          <a href="#expertise" className="shrink-0 hover:text-white transition-colors">EXPERTISE</a>
+          <a href="#contato" className="shrink-0 hover:text-white transition-colors">CONTATO</a>
         </div>
 
         {/* CTA Button */}
-        <div>
+        <div className="shrink-0">
           <a href="#portfolio"
-            className="group relative inline-flex items-center justify-center px-6 md:px-8 py-2 md:py-2.5 text-sm font-bold text-white bg-brand-cardHover border border-white/5 rounded-full overflow-hidden transition-all duration-300 hover:bg-[#1a1a1a]">
+            className="group relative inline-flex items-center justify-center px-5 md:px-8 py-2 md:py-2.5 text-xs md:text-sm font-bold text-white bg-brand-cardHover border border-white/5 rounded-full overflow-hidden transition-all duration-300 hover:bg-[#1a1a1a]">
             <span className="relative z-10 font-sans tracking-wide">Portfólio</span>
 
             {/* Bottom Glow effect */}

@@ -78,20 +78,20 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-bg text-white pt-10 pb-24 px-6 md:px-12 lg:px-24 font-sans font-light">
+    <div className="min-h-screen bg-brand-bg text-white pt-10 pb-24 px-5 md:px-12 lg:px-24 font-sans font-light">
       
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+      <div className="flex flex-col-reverse md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-6 md:gap-8">
         <button 
           onClick={handleBack}
-          className="flex items-center gap-3 px-6 py-2.5 rounded-full border border-white/5 bg-brand-card hover:bg-[#1a1a1a] transition-all text-xs font-bold tracking-widest text-[#A1A1AA] hover:text-white group"
+          className="flex items-center gap-3 px-5 py-2 md:px-6 md:py-2.5 rounded-full border border-white/5 bg-brand-card hover:bg-[#1a1a1a] transition-all text-[10px] md:text-xs font-bold tracking-widest text-[#A1A1AA] hover:text-white group"
         >
           <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
           VOLTAR
         </button>
 
-        <div className="text-left md:text-right">
-          <h1 className="text-5xl md:text-6xl font-sans font-bold tracking-tight mb-3">
+        <div className="text-left md:text-right w-full md:w-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold tracking-tight mb-3">
             Projetos <span className="text-transparent bg-clip-text bg-brand-gradient font-normal italic pr-2">Selecionados</span>
           </h1>
           <p className="text-[#A1A1AA] text-sm md:text-base font-light tracking-wide">
@@ -101,12 +101,12 @@ const Portfolio = () => {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center gap-4 mb-16">
+      <div className="flex overflow-x-auto snap-x snap-mandatory items-center gap-3 mb-12 pb-2 md:flex-wrap md:overflow-visible md:mb-16 md:gap-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`px-6 py-2.5 rounded-xl text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
+            className={`shrink-0 snap-start px-5 py-2 md:px-6 md:py-2.5 rounded-xl text-[10px] md:text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
               activeCategory === category
                 ? 'bg-brand-primary text-white shadow-[0_0_20px_rgba(28,124,125,0.3)]'
                 : 'text-[#A1A1AA] hover:text-white'
@@ -118,7 +118,7 @@ const Portfolio = () => {
       </div>
 
       {/* Grid */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <AnimatePresence>
           {filteredProjects.map((project) => (
             <motion.div
@@ -128,10 +128,10 @@ const Portfolio = () => {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
               key={project.id}
-              className="group block relative bg-brand-card border border-white/5 rounded-[2rem] overflow-hidden hover:border-brand-primary/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(28,124,125,0.1)] flex flex-col"
+              className="group block relative bg-brand-card border border-white/5 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden hover:border-brand-primary/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(28,124,125,0.1)] flex flex-col"
             >
               {/* Image Container with Badge */}
-              <div className="relative h-64 overflow-hidden rounded-t-[2rem]">
+              <div className="relative h-56 md:h-64 overflow-hidden rounded-t-[1.5rem] md:rounded-t-[2rem]">
                 <img 
                   src={project.image} 
                   onError={handleImageError}
@@ -150,11 +150,11 @@ const Portfolio = () => {
               </div>
 
               {/* Content Container */}
-              <div className="relative p-8 pt-4 flex-1 flex flex-col justify-between z-10">
+              <div className="relative p-6 pt-5 md:p-8 md:pt-4 flex-1 flex flex-col justify-between z-10">
                 
-                <div className="mb-8">
+                <div className="mb-6 md:mb-8">
                   <div className="flex justify-between items-start mb-3 gap-2">
-                    <h3 className="text-2xl font-sans font-bold text-white group-hover:text-brand-primary transition-colors leading-tight">
+                    <h3 className="text-xl md:text-2xl font-sans font-bold text-white group-hover:text-brand-primary transition-colors leading-tight">
                       {project.title}
                     </h3>
                     

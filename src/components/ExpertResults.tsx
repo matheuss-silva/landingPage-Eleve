@@ -158,28 +158,107 @@ const data = [
 
 const revealEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const mobileCardVariants: Variants = {
-  hidden: { opacity: 0, y: 28, scale: 0.98 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.55,
-      delay: index * 0.08,
-      ease: revealEase,
-    },
-  }),
-};
+function MobileCard({ item, index }: { item: typeof data[0]; index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
 
-const sectionTitle = (
-  <>
-    <span className="text-brand-primary">Soluções</span> que evoluem para{" "}
-    <span className="text-transparent bg-clip-text bg-brand-gradient">
-      resultados
-    </span>
-  </>
-);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start 75%", "start 25%"],
+  });
+
+  const progress = useSpring(scrollYProgress, {
+    stiffness: reduceMotion ? 400 : 120,
+    damping: reduceMotion ? 90 : 28,
+    mass: 0.35,
+  });
+
+  const expOpacity = useTransform(progress, [0.1, 0.45], [1, 0]);
+  const resOpacity = useTransform(progress, [0.45, 0.8], [0, 1]);
+  const iconScale = useTransform(
+    progress,
+    [0, 0.45, 0.8, 1],
+    [0.94, 0.84, 1, 1],
+  );
+  const iconRotate = useTransform(progress, [0, 0.5, 1], [0, -5, 0]);
+  const expIconOpacity = useTransform(progress, [0.35, 0.5], [1, 0]);
+  const resIconOpacity = useTransform(progress, [0.45, 0.6], [0, 1]);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5 }}
+      className="group relative min-h-[355px] overflow-hidden rounded-[1.75rem] border border-brand-primary/30 bg-gradient-to-b from-brand-primary/10 to-transparent transition-all duration-300 hover:border-brand-primary/60 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)]"
+    >
+      <div className="absolute inset-0 bg-brand-primary/5 blur-3xl transition-colors duration-500 group-hover:bg-brand-primary/10" />
+      <div className="relative z-10 flex h-full flex-col p-6">
+        <div className="mb-7 flex items-center justify-between">
+          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-white/35">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="h-px flex-1 ml-4 bg-gradient-to-r from-brand-primary/40 to-transparent" />
+        </div>
+
+        <motion.div
+          style={
+            reduceMotion ? undefined : { scale: iconScale, rotate: iconRotate }
+          }
+          className="mb-8 flex justify-center"
+        >
+          <div className="relative grid h-24 w-24 place-items-center">
+            <motion.div
+              style={reduceMotion ? undefined : { opacity: expIconOpacity }}
+              className="col-start-1 row-start-1 flex h-20 w-20 items-center justify-center text-brand-primary"
+            >
+              {expIcons[index]}
+            </motion.div>
+            <motion.div
+              style={reduceMotion ? undefined : { opacity: resIconOpacity }}
+              className="col-start-1 row-start-1 flex h-24 w-24 items-center justify-center text-brand-primary"
+            >
+              {resIcons[index]}
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <div className="grid flex-grow">
+          <motion.div
+            style={reduceMotion ? undefined : { opacity: expOpacity }}
+            className="col-start-1 row-start-1 flex flex-col pointer-events-none"
+          >
+            <span className="mb-2 font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-brand-primary/90">
+              Expertise
+            </span>
+            <h3 className="mb-3 text-xl font-bold text-white">
+              {item.expTitle}
+            </h3>
+            <p className="text-sm font-medium leading-relaxed text-white/62">
+              {item.expDesc}
+            </p>
+          </motion.div>
+
+          <motion.div
+            style={reduceMotion ? undefined : { opacity: resOpacity }}
+            className="col-start-1 row-start-1 flex flex-col pointer-events-none"
+          >
+            <span className="mb-2 font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-brand-primary/90">
+              Resultado
+            </span>
+            <h3 className="mb-3 text-xl font-bold text-white">
+              {item.resTitle}
+            </h3>
+            <p className="text-sm font-medium leading-relaxed text-white/78">
+              {item.resDesc}
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function ExpertResults() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -208,7 +287,6 @@ export default function ExpertResults() {
   const iconRotate = useTransform(progress, [0, 0.5, 1], [0, -5, 0]);
   const expIconOpacity = useTransform(progress, [0.34, 0.52], [1, 0]);
   const resIconOpacity = useTransform(progress, [0.4, 0.6], [0, 1]);
-  const progressLine = useTransform(progress, [0, 1], [0.08, 1]);
   const auraOpacity = useTransform(
     progress,
     [0.12, 0.5, 0.9],
@@ -220,83 +298,30 @@ export default function ExpertResults() {
       id="expertise"
       className="relative border-t border-white/5 bg-transparent"
     >
-      <div className="relative z-10 px-5 py-20 sm:px-6 md:hidden">
+      <div className="relative z-10 block px-5 py-20 sm:px-6 md:hidden">
         <div className="mx-auto max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6 }}
-            className="mb-10 text-center"
+            className="mb-14 text-center"
           >
-            <span className="mb-4 block font-mono text-xs font-bold uppercase tracking-[0.28em] text-brand-primary">
+            <span className="mb-4 block font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-brand-primary">
               Nossa expertise
             </span>
-            <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
-              {sectionTitle}
+            <h2 className="mb-2 text-3xl font-bold leading-[1.1] text-white">
+              Soluções Digitais <span className="text-brand-primary">Sob Medida</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-relaxed text-white/65 sm:text-base">
-              No mobile, a experiência fica direta: cada serviço mostra com
-              clareza o que entregamos e o impacto real disso na jornada do seu
-              cliente.
+            <p className="mx-auto mt-4 max-w-[280px] text-sm font-medium leading-relaxed text-white/70">
+              De Wireframe a <span className="text-brand-primary font-bold">Resultados</span>. O conceito amadurece, a interface ganha intenção e a
+              experiência se torna rentável. Role para ver:
             </p>
           </motion.div>
 
-          <div className="grid gap-4">
+          <div className="flex flex-col gap-6">
             {data.map((item, index) => (
-              <motion.article
-                key={item.expTitle}
-                custom={index}
-                variants={mobileCardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
-                className="group relative overflow-hidden rounded-[1.6rem] border border-brand-primary/30 bg-gradient-to-b from-brand-primary/10 to-transparent p-5 transition-all duration-300 hover:border-brand-primary/60 hover:shadow-[0_8px_30px_rgb(28,124,125,0.15)]"
-              >
-                <div className="absolute inset-0 bg-brand-primary/5 blur-3xl transition-colors duration-500 group-hover:bg-brand-primary/10" />
-                <div className="relative z-10">
-                  <div className="mb-5 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-brand-primary/20 bg-brand-primary/10 text-brand-primary">
-                        <div className="h-6 w-6">{expIcons[index]}</div>
-                      </div>
-                      <span className="font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-white/40">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent ml-4" />
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                      <span className="mb-2 block font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-brand-primary">
-                        Expertise
-                      </span>
-                      <h3 className="mb-2 text-lg font-bold text-white">
-                        {item.expTitle}
-                      </h3>
-                      <p className="text-sm font-medium leading-relaxed text-white/68">
-                        {item.expDesc}
-                      </p>
-                    </div>
-
-                    <div className="rounded-2xl border border-brand-primary/15 bg-brand-primary/[0.07] p-4">
-                      <div className="mb-3 flex items-center gap-3 text-brand-primary">
-                        <div className="h-5 w-5">{resIcons[index]}</div>
-                        <span className="font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-brand-primary">
-                          Resultado
-                        </span>
-                      </div>
-                      <h3 className="mb-2 text-lg font-bold text-white">
-                        {item.resTitle}
-                      </h3>
-                      <p className="text-sm font-medium leading-relaxed text-white/78">
-                        {item.resDesc}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.article>
+              <MobileCard key={item.expTitle} item={item} index={index} />
             ))}
           </div>
         </div>
@@ -304,7 +329,7 @@ export default function ExpertResults() {
 
       <section
         ref={containerRef}
-        className="relative hidden h-[220vh] border-t border-white/5 bg-transparent md:block lg:h-[235vh]"
+        className="relative hidden h-[220vh] bg-transparent md:block lg:h-[235vh]"
       >
         <div className="sticky top-0 flex h-screen items-center overflow-hidden px-6 py-10 lg:px-12">
           <motion.div
@@ -342,7 +367,7 @@ export default function ExpertResults() {
                   De Wireframe a{" "}
                   <span className="text-brand-primary">Resultados</span>
                 </h2>
-                <p className="mt-3 max-w-2xl text-base font-medium text-white/62">
+                <p className="mt-3 max-w-2xl mx-auto text-base font-medium text-white/62">
                   O conceito amadurece, a interface ganha intenção e a
                   experiência vira resultado.
                 </p>
@@ -401,7 +426,7 @@ export default function ExpertResults() {
                         style={
                           reduceMotion ? undefined : { opacity: expOpacity }
                         }
-                        className="col-start-1 row-start-1 flex flex-col"
+                        className="col-start-1 row-start-1 flex flex-col pointer-events-none"
                       >
                         <span className="mb-2 font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-brand-primary/90">
                           Expertise
@@ -418,7 +443,7 @@ export default function ExpertResults() {
                         style={
                           reduceMotion ? undefined : { opacity: resOpacity }
                         }
-                        className="col-start-1 row-start-1 flex flex-col"
+                        className="col-start-1 row-start-1 flex flex-col pointer-events-none"
                       >
                         <span className="mb-2 font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-brand-primary/90">
                           Resultado

@@ -65,13 +65,13 @@ const FooterBlock = () => {
             <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 md:justify-start">
               <a
                 href="#portfolio"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-4 py-2.5 text-sm font-bold text-white transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,124,125,0.18)] sm:px-5"
+                className="group relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full px-4 py-2.5 text-sm font-bold text-white transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(28,124,125,0.18)] sm:px-5"
               >
                 <span className="pointer-events-none absolute -inset-px rounded-full bg-[conic-gradient(from_0deg,rgba(255,255,255,0.04)_0deg,rgba(255,255,255,0.04)_240deg,rgba(28,124,125,0.95)_300deg,rgba(158,220,111,0.95)_332deg,rgba(255,255,255,0.04)_360deg)] animate-[spin_8s_linear_infinite] group-hover:animate-[spin_4s_linear_infinite]" />
                 <span className="pointer-events-none absolute inset-[1px] rounded-full bg-brand-cardHover" />
                 <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-brand-primary/0 via-brand-primary/12 to-brand-accent/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <span className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 skew-x-[-20deg] bg-white/10 blur-md opacity-0 transition-all duration-700 group-hover:left-full group-hover:opacity-100" />
-                <span className="relative z-10 inline-flex items-center gap-2 font-sans tracking-wide">
+                <span className="relative z-10 inline-flex items-center gap-2 whitespace-nowrap font-sans tracking-wide">
                   Ver portfólio
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
@@ -140,7 +140,7 @@ const FooterBlock = () => {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-4 pr-20 text-[11px] font-mono uppercase leading-relaxed tracking-[0.14em] text-white/45 sm:pr-24 md:mt-7 md:flex-row md:items-center md:justify-between md:pr-0 md:text-xs md:tracking-[0.18em]">
+        <div className="mt-6 flex flex-col items-center gap-2 border-t border-white/10 pt-4 pb-20 text-center text-[10px] font-mono uppercase leading-relaxed tracking-[0.14em] text-white/45 sm:text-[11px] md:mt-7 md:flex-row md:items-center md:justify-between md:pb-0 md:text-left md:text-xs md:tracking-[0.18em]">
           <span>Elevation Digital © 2026. Todos os direitos reservados.</span>
           <span className="hidden md:inline">Design autoral. Performance real.</span>
         </div>

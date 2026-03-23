@@ -19,9 +19,9 @@ const FinalCTA = () => {
           <span className="mb-5 block font-mono text-xs font-bold uppercase tracking-[0.28em] text-brand-primary sm:mb-6 sm:text-sm">
             [ HORA DA DECISÃO ]
           </span>
-          <h2 className="mx-auto mb-6 max-w-[11ch] font-sans text-4xl font-bold leading-[0.95] tracking-tighter text-white sm:mb-8 sm:max-w-[12ch] sm:text-5xl md:max-w-none md:text-6xl md:leading-none lg:text-8xl">
+          <h2 className="mx-auto mb-6 max-w-[16ch] font-sans text-4xl font-bold leading-[1.1] tracking-tight text-white sm:mb-8 sm:max-w-[12ch] sm:text-5xl md:max-w-none md:text-6xl md:leading-none lg:text-8xl">
             Seu Concorrente Já Está{" "}
-            <span className="text-transparent bg-clip-text bg-brand-gradient">Se Movendo.</span>{" "}
+            <span className="text-transparent bg-clip-text bg-brand-gradient whitespace-nowrap">Se Movendo.</span>{" "}
             E Você?
           </h2>
           <p className="mx-auto mb-10 max-w-[24rem] text-lg font-light leading-relaxed text-brand-text sm:mb-12 sm:max-w-2xl sm:text-xl">
