@@ -5,12 +5,14 @@
 @layer base {
   body {
     @apply bg-brand-bg text-white font-sans antialiased;
+    scrollbar-width: thin;
+    scrollbar-color: #1C7C7D #050D14;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   background: #050D14;

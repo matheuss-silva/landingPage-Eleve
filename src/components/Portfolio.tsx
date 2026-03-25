@@ -5,57 +5,66 @@ import { motion, AnimatePresence } from 'framer-motion';
 const projects = [
   {
     id: 1,
-    title: 'Obligar',
-    subtitle: 'Página de captura direta para leads no WhatsApp',
-    image: '/images/obligar.jpg', // Placeholder
-    category: 'Landing page',
-    tags: ['SISTEMA', 'CAPTURA', 'SAAS'],
-    link: '#'
+    title: 'Cooperenf',
+    subtitle: 'Site institucional',
+    image: '/images/cooperenf.png',
+    category: 'Site Institucionais',
+    tags: ['SAÚDE', 'INSTITUCIONAL', 'COOPERATIVA'],
+    link: 'https://www.cooperenf.com/'
   },
   {
     id: 2,
-    title: 'PagSafe',
-    subtitle: 'Gateway de pagamentos para checkout de alta conversão',
-    image: '/images/pagsafe.jpg',
-    category: 'Dashboard',
-    tags: ['GATEWAY', 'PAGAMENTOS', 'FINANCEIRO'],
-    link: '#'
+    title: 'Mendes Advogacia',
+    subtitle: 'Site institucional para advogados',
+    image: '/images/mendes.png',
+    category: 'Landing page',
+    tags: ['DIREITO', 'INSTITUCIONAL', 'ADVOGACIA'],
+    link: 'https://mendes-advogacia.base44.app/'
   },
   {
     id: 3,
-    title: 'Federal Service',
-    subtitle: 'Página institucional focada em segurança corporativa',
-    image: '/images/federal.jpg',
-    category: 'Site Institucionais',
-    tags: ['SEGURANÇA', 'INSTITUCIONAL', 'SERVIÇO'],
-    link: '#'
+    title: 'Alto Traço Engenharia',
+    subtitle: 'Landing page',
+    image: '/images/AltoEngenharia.png',
+    category: 'Landing page',
+    tags: ['Engenharia Civil', 'Arquitetura', 'Projetos'],
+    link: 'https://build-elite-space.base44.app/'
   },
   {
     id: 4,
-    title: 'Foco Soluções Inteligentes',
-    subtitle: 'Página de captura direta para leads no WhatsApp',
-    image: '/images/foco.jpg',
+    title: 'Vida Plena Clínica',
+    subtitle: 'Landing page para clínica de saúde e bem-estar',
+    image: '/images/VidaPlena.png',
     category: 'Landing page',
-    tags: ['REGULARIZAÇÃO', 'AMBIENTE'],
-    link: '#'
+    tags: ['SAÚDE', 'CLÍNICA', 'BEM-ESTAR'],
+    link: 'https://pragmatic-vida-plena-clinica.base44.app/'
   },
   {
     id: 5,
-    title: 'LT Corporation',
-    subtitle: 'Página de captura para o WhatsApp',
-    image: '/images/ltcorp.jpg',
+    title: 'Nexus B2B',
+    subtitle: 'Landing page para desenvolvimento',
+    image: '/images/NexuxCorp.png',
     category: 'Landing page',
-    tags: ['VIAGEM', 'CAPTURA', 'JAPÃO'],
-    link: '#'
+    tags: ['Resultados', 'Gestão', 'B2B', 'Consultoria'],
+    link: 'https://spiritual-nexus-growth-bridge.base44.app/'
   },
   {
     id: 6,
-    title: 'Painel Central',
-    subtitle: 'Ambiente de administração financeira B2B',
-    image: '/images/dashboard.jpg',
+    title: 'Dash Cooperenf',
+    subtitle: 'Dashboard administrativo da cooperativa',
+    image: '/images/dastCooperenf.png',
     category: 'Dashboard',
-    tags: ['DADOS', 'ADMIN', 'FINANÇAS'],
-    link: '#'
+    tags: ['SISTEMA', 'DASHBOARD', 'Finanças', 'Gestão'],
+    link: 'https://dash-cooperenf-xi.vercel.app/'
+  },
+  {
+    id: 7,
+    title: 'Converto Web',
+    subtitle: 'Landing page de alta conversão',
+    image: '/images/converto.jpg',
+    category: 'Site Institucionais',
+    tags: ['CONVERSÃO', 'WEB', 'MARKETING', 'DESIGN'],
+    link: 'https://converto-web-seven.vercel.app/'
   }
 ];
 
@@ -118,15 +127,14 @@ const Portfolio = () => {
       </div>
 
       {/* Grid */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        <AnimatePresence>
-          {filteredProjects.map((project) => (
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 min-h-[400px]">
+        <AnimatePresence mode="wait">
+          {filteredProjects.map((project, index) => (
             <motion.div
-              layout
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, y: 20, filter: 'blur(5px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -20, filter: 'blur(5px)' }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               key={project.id}
               className="group block relative bg-brand-card border border-white/5 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden hover:border-brand-primary/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(28,124,125,0.1)] flex flex-col"
             >
@@ -161,6 +169,8 @@ const Portfolio = () => {
                     {/* Circle Arrow Button */}
                     <a 
                       href={project.link} 
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-brand-primary group-hover:border-brand-primary transition-all duration-300 transform group-hover:-translate-y-1 group-hover:translate-x-1"
                     >
                       <ArrowUpRight size={18} className="text-white/70 group-hover:text-white transition-colors" />

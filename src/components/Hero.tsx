@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
+import { motion, Variants } from 'framer-motion';
 import NetworkBackground from './NetworkBackground';
 
 const Hero = () => {
@@ -16,30 +17,25 @@ const Hero = () => {
     });
   };
 
-  const observeRefs = useRef<(HTMLElement | null)[]>([]);
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observeRefs.current.forEach(el => {
-      if (el) observer.observe(el);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const setRef = (el: HTMLElement | null) => {
-    if (el && !observeRefs.current.includes(el)) {
-      observeRefs.current.push(el);
-    }
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: 'blur(0px)',
+      transition: { duration: 0.8, ease: "easeOut" }
+    },
   };
 
   return (
@@ -64,42 +60,50 @@ const Hero = () => {
       </div>
 
       {/* Content (z-10 for keeping it above background) */}
-      <div className="relative z-10 w-full flex flex-col items-center">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 w-full flex flex-col items-center"
+      >
         {/* Tag */}
-        <div
-          ref={setRef}
-          className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm text-[#A1A1AA] text-xs font-mono tracking-widest uppercase fade-in-up">
-<span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse"></span>
-DESIGN WEB PREMIUM
-        </div>
+        <motion.div
+          variants={itemVariants}
+          className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm text-[#A1A1AA] text-xs font-mono tracking-widest uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse"></span>
+          DESIGN WEB PREMIUM
+        </motion.div>
 
         {/* Main Title */}
-        <h1
-          ref={setRef}
-          className="text-5xl md:text-7xl lg:text-9xl font-sans font-bold tracking-tight mb-8 max-w-5xl mx-auto leading-[1.1] fade-in-up delay-100">
+        <motion.h1
+          variants={itemVariants}
+          className="text-5xl md:text-7xl lg:text-9xl font-sans font-bold tracking-tight mb-8 max-w-5xl mx-auto leading-[1.1]">
           <span className="text-white block">O FUTURO</span>
-          <span className="text-transparent bg-clip-text bg-brand-gradient">COMEÇA
-            AGORA</span>
-        </h1>
+          <span className="text-transparent bg-clip-text bg-brand-gradient">COMEÇA AGORA</span>
+        </motion.h1>
 
         {/* Subtitle */}
-        <p ref={setRef} className="text-lg md:text-xl text-[#A1A1AA] max-w-2xl mx-auto mb-12 font-sans font-light fade-in-up delay-200">
+        <motion.p 
+          variants={itemVariants} 
+          className="text-lg md:text-xl text-[#A1A1AA] max-w-2xl mx-auto mb-12 font-sans font-light">
           Desenvolvemos páginas de alta performance para negócios que querem mais autoridade, mais leads e mais vendas.
-        </p>
+        </motion.p>
 
         {/* CTAs */}
-        <div ref={setRef} className="flex flex-col sm:flex-row items-center gap-6 fade-in-up delay-300">
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6">
           <a href="#whatsapp"
             className="group relative inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-black bg-white rounded-full transition-all duration-300 hover:scale-105 hover:bg-brand-primary hover:text-white shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(28,124,125,0.4)]">
             <span className="relative z-10 font-sans tracking-wide">Elevar Meu Nível</span>
           </a>
 
           <a href="#portfolio"
-            className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium text-white/70 bg-transparent border border-white/20 rounded-full transition-all duration-300 hover:border-brand-primary/80 hover:text-white hover:shadow-[0_0_20px_rgba(28,124,125,0.2)] hover:bg-brand-primary/5 w-full sm:w-auto">
-            <span className="font-sans font-semibold tracking-wide">Ver Portfólio</span>
+            className="group relative inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-white bg-brand-primary/10 border border-brand-primary/30 backdrop-blur-md rounded-full transition-all duration-300 hover:bg-brand-primary/20 hover:border-brand-primary/60 hover:shadow-[0_0_30px_rgba(28,124,125,0.4)] hover:scale-105 w-full sm:w-auto overflow-hidden">
+            {/* Top highlight glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-brand-light to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span className="relative z-10 font-sans tracking-wide">Ver Portfólio</span>
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

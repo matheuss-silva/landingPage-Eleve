@@ -30,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
     const defaultTitle = document.title;
-    const hiddenTitles = ["🚀 Volta aqui!", "👀 Tá perdendo algo!"];
+    const hiddenTitles = ["👀 Volta aqui", "✨ Veja isso"];
     let currentTitleIndex = 0;
     let titleInterval: number | null = null;
 

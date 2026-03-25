@@ -142,7 +142,6 @@ const FooterBlock = () => {
 
         <div className="mt-6 flex flex-col items-center gap-2 border-t border-white/10 pt-4 pb-20 text-center text-[10px] font-mono uppercase leading-relaxed tracking-[0.14em] text-white/45 sm:text-[11px] md:mt-7 md:flex-row md:items-center md:justify-between md:pb-0 md:text-left md:text-xs md:tracking-[0.18em]">
           <span>Elevation Digital © 2026. Todos os direitos reservados.</span>
-          <span className="hidden md:inline">Design autoral. Performance real.</span>
         </div>
       </div>
     </footer>

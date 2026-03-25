@@ -6,7 +6,7 @@ const NavBar = () => {
       {/* Desktop Logo (Outside Card, far left) */}
       <div className="absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 hidden md:flex items-center pointer-events-auto">
         <a href="#home" className="flex items-center group">
-          <img src="/logo.png" alt="Elevation Digital Logo" className="h-12 w-auto object-contain transition-transform group-hover:scale-105" />
+          <img src="/logo.png" alt="Elevation Digital Logo" className="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
         </a>
       </div>
 
@@ -30,7 +30,7 @@ const NavBar = () => {
         {/* CTA Button */}
         <div className="shrink-0">
           <a href="#portfolio"
-            className="group relative inline-flex items-center justify-center px-5 md:px-8 py-2 md:py-2.5 text-xs md:text-sm font-bold text-white bg-brand-cardHover border border-white/5 rounded-full overflow-hidden transition-all duration-300 hover:bg-[#1a1a1a]">
+            className="group relative inline-flex items-center justify-center px-5 md:px-8 py-2 md:py-2.5 text-xs md:text-sm font-bold text-white bg-brand-cardHover border border-white/5 rounded-full overflow-hidden transition-all duration-300 hover:bg-white/10">
             <span className="relative z-10 font-sans tracking-wide">Portfólio</span>
 
             {/* Bottom Glow effect */}
